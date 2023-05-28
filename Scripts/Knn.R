@@ -17,27 +17,27 @@ Dataset1_norm$ambiente <- factor(Dataset1_norm$ambiente, levels = c("UNO", "DOS"
 head(Dataset1_norm)
 
 #index for random sampling
-sample.indexA <- sample(1:nrow(Dataset1_norm)
-                       ,nrow(Dataset1_norm)*0.7
+sample.indexA <- sample(1:nrow(Dataset1_df)
+                       ,nrow(Dataset1_df)*0.7
                        ,replace = F)
 
 predictorsA <- c("ultrasonico", "fotorresistencia", "color1", "color2", "color3")
 
-train.dataA <- Dataset1_norm[sample.indexA
+train.dataA <- Dataset1_df[sample.indexA
                         ,c(predictorsA,"ambiente")
                         ,drop=F]
 
-test.dataA <- Dataset1_norm[-sample.indexA
+test.dataA <- Dataset1_df[-sample.indexA
                         ,c(predictorsA,"ambiente")
                         ,drop=F]
 
 ##### Knn + Normalisation (min-max) #####
-ctrl <- trainControl(method="cv", number = 20, p=0.7)
+ctrl <- trainControl(method="cv", p=0.7)
 knnFitAmbiente <- train(ambiente ~ ultrasonico+fotorresistencia+color1+color2+color3
                 , data = train.dataA
                 , method = "knn"
                 , trControl = ctrl
-                , preProcess = c("scale")
+                , preProcess = c("center","scale")# range = MIN-MAX "center" , "scale" for z-score
                 , tuneLength = 20)
 
 #Output of kNN fit DESDE ACA
@@ -54,7 +54,3 @@ CrossTable(test.dataA$ambiente, knnPredict, prop.chisq = FALSE)
 
 
 saveRDS(knnFitAmbiente, "knn_model.rds")
-saveRDS(test.dataA, "test_data.rds")
-saveRDS(knnPredict, "knn_predict.rds")
-
-

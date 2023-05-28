@@ -20,7 +20,7 @@ pairs.panels(Dataset1_df[, 1:5]
              ,main = "Sensor Data"
              ,pch = 21
              ,cex = 2
-             ,bg = c("blue", "red", "green", "yellow", "grey")[unclass(Dataset1_df$ambiente)])
+             ,bg = c("blue", "red", "green")[unclass(Dataset1_df$ambiente)])
 
 par(mfrow = c(1, 1))
 #Plots Variables predictoras vs objetivo
