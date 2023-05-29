@@ -1,7 +1,6 @@
 library(tidyverse)
 library(caret)
 library(gmodels)
-
 Dataset1 <- read.csv("D:/Usr/Desktop/Andres/8vo Semestre/DataScience/AssignmentThree/Datasets/DATA_SET_3_SENSORES.csv")
 Dataset1_df <- Dataset1
 Dataset1_df$ambiente <- factor(Dataset1_df$ambiente, levels = c("UNO", "DOS", "TRES"))
@@ -31,7 +30,7 @@ test.dataA <- Dataset1_norm[-sample.indexA
                         ,c(predictorsA,"ambiente")
                         ,drop=F]
 
-##### Knn + Normalisation (min-max) #####
+#### KNN ###
 ctrl <- trainControl(method="cv", p=0.7)
 knnFitAmbiente <- train(ambiente ~ ultrasonico+fotorresistencia+color1+color2+color3
                 , data = train.dataA
@@ -42,7 +41,6 @@ knnFitAmbiente <- train(ambiente ~ ultrasonico+fotorresistencia+color1+color2+co
 
 #Output of kNN fit DESDE ACA
 knnFitAmbiente
-#plot(knnFitAmbiente)
 
 #Get predictions for the testing data
 knnPredict <- predict(knnFitAmbiente, newdata = test.dataA)
@@ -54,3 +52,4 @@ CrossTable(test.dataA$ambiente, knnPredict, prop.chisq = FALSE)
 
 
 saveRDS(knnFitAmbiente, "knn_model.rds")
+

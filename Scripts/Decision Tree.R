@@ -1,6 +1,6 @@
 library(rpart)
 library(rpart.plot)
-
+#Variable Predictoras
 predictorsA3 <- c("ultrasonico", "fotorresistencia", "color1", "color2", "color3")
 #index for random sampling
 sample.indexA3 <- sample(1:nrow(Dataset1_norm)
@@ -8,7 +8,7 @@ sample.indexA3 <- sample(1:nrow(Dataset1_norm)
                         ,replace = F)
 
 train.dataA3 <- Dataset1_norm[sample.indexA3
-                             ,c(predictorsA3,"ambiente")
+                            ,c(predictorsA3,"ambiente")
                              ,drop=F]
 
 test.dataA3 <- Dataset1_norm[-sample.indexA3
@@ -20,4 +20,4 @@ arbol_ambiente <- rpart(ambiente ~ ultrasonico+fotorresistencia+color1+color2+co
 
 rpart.plot(arbol_ambiente, type = 2, extra = 104)
 
-saveRDS(arbol_ambiente, "DT_model.rds")
+saveRDS(arbol_ambiente, "DT_model.rds") #Guardar el modelo

@@ -13,4 +13,4 @@ nuevos_datos3_norm$ambiente <- factor(nuevos_datos3_norm$ambiente, levels = c("U
 predicciones3 <- predict(Newarbol_ambiente, newdata = nuevos_datos3_norm)
 
 
-rpart.plot(Newarbol_ambiente, type = 2, extra = 104)
+rpart.plot(Newarbol_ambiente, type = 1, extra = 104)

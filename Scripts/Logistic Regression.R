@@ -2,11 +2,8 @@ library(caret)
 library(tidyverse)
 library(gmodels)
 
-Dataset1 <- read.csv("D:/Usr/Desktop/Andres/8vo Semestre/DataScience/AssignmentThree/Datasets/DATA_SET_3_SENSORES.csv")
-Dataset1_df <- Dataset1
-Dataset1_df$ambiente <- factor(Dataset1_df$ambiente, levels = c("UNO", "DOS", "TRES"))
-
 head(Dataset1_norm)
+
 sample.indexA2 <- sample(1:nrow(Dataset1_norm)
                         ,nrow(Dataset1_norm)*0.7
                         ,replace = F)
