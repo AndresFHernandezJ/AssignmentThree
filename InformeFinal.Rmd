@@ -592,6 +592,7 @@ saveRDS(arbol_ambiente, "DT_model.rds") #Guardar el modelo
 
 \vspace{0.5cm}
 
+
 Donde se puede observar que partió desde el ambiente DOS con el 100$ de los datos y generó la condición de color1 < 0.58, donde de no ser menor a dicho valor, se clasifica como ambiente DOS con un 34% de los datos, el otro 66% de los datos paso a un segundo nodo donde se condicionó esta vez respecto al sensor de ultrasonido con un valor menor a 0.071, en donde de ser cierto se clasifica como del ambiente UNO y por el contrario, de no ser cierto se clasifica automáticamente en el ambiente TRES.
 
 En los últimos 3 nodos se puede observar el porcentaje de datos en cada ambiente. 
