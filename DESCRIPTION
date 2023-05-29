@@ -1,0 +1,8 @@
+Package: Assignment 3 
+Version: 1.0.0
+Title: Assignment 3 Final
+Description: Este paquete contiene los datasets utilizados y codigos utilizados frente a el ejercicio donde un robot movil tiene que predecir en que ambiente de 3 existentes se encuentra ubicado a partir de 3 sensores distintos.
+Author: Santiago Avila, Andres Hernandez, Andres Montenegro, Brayan Zambrano, Nikolas Riapira
+Maintainer: Andrés Hernández andfe01@hotmai.com
+License: MIT
+RoxygenNote: 7.2.3
