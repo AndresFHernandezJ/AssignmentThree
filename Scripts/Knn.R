@@ -17,17 +17,17 @@ Dataset1_norm$ambiente <- factor(Dataset1_norm$ambiente, levels = c("UNO", "DOS"
 head(Dataset1_norm)
 
 #index for random sampling
-sample.indexA <- sample(1:nrow(Dataset1_df)
-                       ,nrow(Dataset1_df)*0.7
+sample.indexA <- sample(1:nrow(Dataset1_norm)
+                       ,nrow(Dataset1_norm)*0.7
                        ,replace = F)
 
 predictorsA <- c("ultrasonico", "fotorresistencia", "color1", "color2", "color3")
 
-train.dataA <- Dataset1_df[sample.indexA
+train.dataA <- Dataset1_norm[sample.indexA
                         ,c(predictorsA,"ambiente")
                         ,drop=F]
 
-test.dataA <- Dataset1_df[-sample.indexA
+test.dataA <- Dataset1_norm[-sample.indexA
                         ,c(predictorsA,"ambiente")
                         ,drop=F]
 

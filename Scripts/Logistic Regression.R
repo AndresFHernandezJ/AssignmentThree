@@ -25,15 +25,15 @@ test.dataA2 <- Dataset1_norm[-sample.indexA2
 fit.control <- trainControl(method = "repeatedcv"
                             ,number = 10, repeats = 20)
 
-Ambientefit <- train(ambiente ~ ultrasonico + fotorresistencia + color1 + color2 + color3
+LRfit <- train(ambiente ~ ultrasonico + fotorresistencia + color1 + color2 + color3
                      ,data = train.dataA2
                      ,method = "multinom"
                      ,trControl = fit.control, trace = FALSE)
 
-Ambientefit
+LRfit
 
-LRPredict <- predict(Ambientefit, test.dataA2, type = "prob")
+LRPredict <- predict(LRfit, test.dataA2, type = "prob")
 LRPredict
-summary(Ambientefit)
+summary(LRfit)
 
-saveRDS(Ambientefit, "LR_model.rds")
+saveRDS(LRfit, "LR_model.rds")

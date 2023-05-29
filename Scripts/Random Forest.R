@@ -7,11 +7,11 @@ training.dataA4<- Dataset1_norm[data.samples, ]
 
 test.dataA4 <- Dataset1_norm[-data.samples, ]
 
-Ambientefit.rf <- randomForest(ambiente ~ ultrasonico + fotorresistencia + color1 + color2 + color3
+RFfit.rf <- randomForest(ambiente ~ ultrasonico + fotorresistencia + color1 + color2 + color3
                                ,data = training.dataA4)
 
-Aprediction.rf <- predict(Ambientefit.rf, test.dataA4)
-
-output <- data.frame(test.dataA4$ambiente, Aprediction.rf)
+Aprediction.rf <- predict(RFfit.rf, test.dataA4)
 
 table(test.dataA4$ambiente, Aprediction.rf)
+
+saveRDS(RFfit.rf, "RF_model.rds")
